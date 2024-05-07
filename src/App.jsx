@@ -1,20 +1,20 @@
-import { v4 as uuid } from 'uuid';
 
+import React, {useState} from 'react';
+import { v4 as uuid } from 'uuid';
 
 function App() {
 
-  const list = [
-    { id: uuid(), task: "Trabalhar amanhã"},
-    {id: uuid(), task: "Estudar React"}
-  ]
-  //"Trampar amanhã", "Acordar amanhã cedo", "Descansar"
+  const [list, setList] = useState([{ id: uuid(), task: 'Trabalhar amanhã'}])
+  const [inputTask, setInputTask] = useState('')
+
 
   function inputMudou(event) {
-    console.log(event.target.value)
+    setInputTask(event.target.value)
+    
   }
 
   function cliqueiNoBotao() {
-    console.log('Cliquei no botão')
+    setList([ ... list, { id: uuid(), task: inputTask }])
   }
 
   return (
